@@ -1,14 +1,14 @@
 services:
   server:
     build: .
-    image: ccs-game
-    container_name: ccs-server
+    image: code-breaker-game
+    container_name: code-breaker-game-server
     command: ["server"]
     ports:
       - "8080:8080"
 
   client:
-    image: ccs-game
+    image: code-breaker-game
     entrypoint: ["/app/server", "client", "server:8080"]
     stdin_open: true   # docker run -i
     tty: true          # docker run -t

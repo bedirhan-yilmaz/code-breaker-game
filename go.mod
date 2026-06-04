@@ -1,4 +1,4 @@
-module ccs_interview
+module code-breaker-game
 
 go 1.20
 

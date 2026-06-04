@@ -1,7 +1,7 @@
 package main
 
 import (
-	"ccs_interview/game"
+	"code-breaker-game/game"
 	"log"
 	"os"
 )

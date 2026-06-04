@@ -1,13 +1,13 @@
 apiVersion: v1
 kind: Service
 metadata:
-  name: ccs-server-svc
-  namespace: ccs-game
+  name: code-breaker-game-server-svc
+  namespace: code-breaker-game
   labels:
-    app: ccs-server
+    app: code-breaker-game-server
 spec:
   selector:
-    app: ccs-server
+    app: code-breaker-game-server
   ports:
     - name: tcp-game
       protocol: TCP

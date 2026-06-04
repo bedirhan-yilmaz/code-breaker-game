@@ -1,23 +1,23 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: ccs-server
-  namespace: ccs-game
+  name: code-breaker-game-server
+  namespace: code-breaker-game
   labels:
-    app: ccs-server
+    app: code-breaker-game-server
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: ccs-server
+      app: code-breaker-game-server
   template:
     metadata:
       labels:
-        app: ccs-server
+        app: code-breaker-game-server
     spec:
       containers:
-        - name: ccs-server
-          image: ccs-game:latest
+        - name: code-breaker-game-server
+          image: code-breaker-game:latest
           imagePullPolicy: Never
           args: ["server"]
           ports:
