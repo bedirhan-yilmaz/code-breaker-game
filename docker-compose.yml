@@ -1,0 +1,17 @@
+services:
+  server:
+    build: .
+    image: ccs-game
+    container_name: ccs-server
+    command: ["server"]
+    ports:
+      - "8080:8080"
+
+  client:
+    image: ccs-game
+    entrypoint: ["/app/server", "client", "server:8080"]
+    stdin_open: true   # docker run -i
+    tty: true          # docker run -t
+    depends_on:
+      - server
+    # No container_name — allows multiple instances via `docker compose run client`
