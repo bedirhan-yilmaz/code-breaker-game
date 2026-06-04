@@ -1,0 +1,42 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: ccs-server
+  namespace: ccs-game
+  labels:
+    app: ccs-server
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: ccs-server
+  template:
+    metadata:
+      labels:
+        app: ccs-server
+    spec:
+      containers:
+        - name: ccs-server
+          image: ccs-game:latest
+          imagePullPolicy: Never
+          args: ["server"]
+          ports:
+            - containerPort: 8080
+              protocol: TCP
+          readinessProbe:
+            tcpSocket:
+              port: 8080
+            initialDelaySeconds: 2
+            periodSeconds: 5
+          livenessProbe:
+            tcpSocket:
+              port: 8080
+            initialDelaySeconds: 5
+            periodSeconds: 10
+          resources:
+            requests:
+              cpu: "50m"
+              memory: "32Mi"
+            limits:
+              cpu: "200m"
+              memory: "64Mi"
